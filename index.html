@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR Medtech Pvt. Ltd | EU MDR & ISO 13485 Regulatory Affairs Consultants</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#0f172a',
+                            900: '#0a2540',
+                            950: '#051329',
+                        },
+                        medical: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0066cc',
+                            600: '#0052a3',
+                            700: '#003d7a',
+                        },
+                        accent: {
+                            cyan: '#00d4ff',
+                            teal: '#0d9488',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .glass-card-dark {
+            background: rgba(10, 37, 64, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 70% 20%, rgba(0, 212, 255, 0.12) 0%, transparent 40%),
+                        radial-gradient(circle at 20% 80%, rgba(0, 102, 204, 0.15) 0%, transparent 50%),
+                        linear-gradient(135deg, #051329 0%, #0a2540 60%, #0f172a 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-medical-500 selection:text-white">
+
+    <!-- Header / Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-navy-900/90 backdrop-blur-md border-b border-white/10" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-medical-500 to-accent-cyan flex items-center justify-center text-white shadow-lg shadow-medical-500/30">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="text-lg font-extrabold tracking-tight text-white block leading-none">VR Medtech <span class="text-accent-cyan">Pvt. Ltd</span></span>
+                        <span class="text-[10px] tracking-widest uppercase text-slate-400 font-medium">Global Quality & Regulatory Consulting</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#services" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Core Services</a>
+                    <a href="#catalog" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">SOP & Format Catalog</a>
+                    <a href="#estimator" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Scope Estimator</a>
+                    <a href="#process" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Process</a>
+                    <a href="#faq" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">FAQ</a>
+                </nav>
+
+                <!-- Header CTA -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#contact" class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-medical-500 hover:bg-medical-600 transition-all shadow-md shadow-medical-500/20 active:scale-95">
+                        Consultation Request
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" class="text-slate-300 hover:text-white focus:outline-none p-2" aria-label="Toggle Menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-950 border-b border-white/10 px-4 pt-2 pb-6 space-y-3">
+            <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-white/5">Core Services</a>
+            <a href="#catalog" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-white/5">SOP & Format Catalog</a>
+            <a href="#estimator" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-white/5">Scope Estimator</a>
+            <a href="#process" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-white/5">Process</a>
+            <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-white/5">FAQ</a>
+            <a href="#contact" class="block w-full text-center mt-4 px-5 py-3 rounded-lg text-base font-semibold text-white bg-medical-500 hover:bg-medical-600 transition-all">
+                Hire Specialist
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 hero-gradient overflow-hidden text-white">
+        <!-- Subtle grid background effect -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column: Copy & CTA -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs sm:text-sm font-medium text-accent-cyan">
+                        <span class="w-2 h-2 rounded-full bg-accent-cyan animate-pulse"></span>
+                        <span>VR Medtech Pvt. Ltd | EU MDR 2017/745, ISO 13485 & CDSCO Regulatory Advisors</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        EU MDR Technical Files & <br class="hidden sm:inline"/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-accent-cyan">
+                            ISO 13485 QMS Consulting
+                        </span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        VR Medtech Pvt. Ltd delivers audit-ready MDR Technical Documentation, Class I to III GSPR checklists, Risk Files (ISO 14971), CEP/CER, PMS/PSUR, and plug-and-play ISO 13485 QMS SOP formats for Indian & global medical device manufacturers.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#contact" class="w-full sm:w-auto inline-flex items-center justify-center px-7 py-4 rounded-xl text-base font-bold text-white bg-gradient-to-r from-medical-500 to-medical-600 hover:from-medical-600 hover:to-medical-700 shadow-lg shadow-medical-500/30 transition-all hover:-translate-y-0.5">
+                            Work With VR Medtech Specialists
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                        <a href="#catalog" class="w-full sm:w-auto inline-flex items-center justify-center px-7 py-4 rounded-xl text-base font-semibold text-slate-200 bg-white/10 hover:bg-white/15 border border-white/15 transition-all">
+                            Explore SOP Formats
+                        </a>
+                    </div>
+
+                    <!-- Trust Badges Bar -->
+                    <div class="pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4 text-left">
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-accent-cyan flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span class="text-xs sm:text-sm font-medium text-slate-300">ISO 13485:2016 Compliant</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-accent-cyan flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span class="text-xs sm:text-sm font-medium text-slate-300">MDR 2017/745 Ready</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-accent-cyan flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span class="text-xs sm:text-sm font-medium text-slate-300">100% Notified Body Passed</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-accent-cyan flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span class="text-xs sm:text-sm font-medium text-slate-300">Fast Turnaround</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Interactive Card Preview / Metrics -->
+                <div class="lg:col-span-5">
+                    <div class="glass-card-dark rounded-2xl p-6 sm:p-8 shadow-2xl relative">
+                        <div class="flex items-center justify-between pb-6 border-b border-white/10">
+                            <div>
+                                <span class="text-xs font-mono uppercase text-accent-cyan tracking-wider">Compliance Status</span>
+                                <h3 class="text-lg font-bold text-white">Technical Documentation Matrix</h3>
+                            </div>
+                            <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full text-xs font-semibold">Audit Ready</span>
+                        </div>
+
+                        <!-- Mini Checklist items -->
+                        <div class="space-y-4 py-6">
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-white/5 border border-white/5">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-emerald-400"></div>
+                                    <span class="text-sm text-slate-200">Annex I GSPR Checklist</span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-400">Clause 1-23</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-white/5 border border-white/5">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-emerald-400"></div>
+                                    <span class="text-sm text-slate-200">ISO 14971 Risk File</span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-400">Benefit-Risk Ratio</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-white/5 border border-white/5">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-emerald-400"></div>
+                                    <span class="text-sm text-slate-200">Clinical Evaluation (CER)</span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-400">MDCG 2020-6</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-white/5 border border-white/5">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-emerald-400"></div>
+                                    <span class="text-sm text-slate-200">PMS & PSUR Architecture</span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-400">MDR Art. 83-86</span>
+                            </div>
+                        </div>
+
+                        <!-- Highlights Banner -->
+                        <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400">
+                            <span>Notified Body Focus: TÜV, BSI, DEKRA</span>
+                            <span class="text-accent-cyan font-mono">100% Coverage</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Services Showcase Section -->
+    <section id="services" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-mono uppercase tracking-widest font-semibold text-medical-600 bg-medical-50 px-3 py-1 rounded-full">Specialized Expertise</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 mt-3 tracking-tight">Regulatory & Quality Assurance Services</h2>
+                <p class="text-slate-600 mt-4 text-base sm:text-lg">End-to-end technical file compilation, ISO 13485 QMS deployment, and audit defense strategies tailored for medical device manufacturers worldwide.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Service Card 1 -->
+                <div class="bg-white rounded-2xl p-7 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-medical-50 text-medical-600 flex items-center justify-center mb-6 group-hover:bg-medical-500 group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy-900 mb-3">EU MDR Technical Documentation (TD)</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                            Complete technical file compilation in compliance with Annex II & III of Regulation (EU) 2017/745 managed by VR Medtech specialists.
+                        </p>
+                        <ul class="space-y-2 text-xs text-slate-500 mb-6">
+                            <li class="flex items-center"><svg class="w-4 h-4 text-emerald-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>GSPR Checklists & Equivalency</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-emerald-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>ISO 14971 Risk Management Files</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-emerald-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>CEP & Clinical Evaluation Reports (CER)</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-emerald-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>PMS, PSUR & PMCF Plans/Reports</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center text-sm font-bold text-medical-600 hover:text-medical-700">Request TD Compilation &rarr;</a>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="bg-white rounded-2xl p-7 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-medical-50 text-medical-600 flex items-center justify-center mb-6 group-hover:bg-medical-500 group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy-900 mb-3">ISO 13485:2016 QMS Setup</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                            End-to-end implementation of Quality Management Systems. Designed specifically for your organizational size and device risk class.
+                        </p>
+                        <ul class="space-y-2 text-xs text-slate-500 mb-6">
+                            <li class="flex items-center"><svg class="w-4 h-4 text-emerald-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Quality Manual Development</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-emerald-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Mandatory Standard Operating Procedures</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-emerald-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Process Map & Interaction Diagrams</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-emerald-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Management Review & Internal Audits</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center text-sm font-bold text-medical-600 hover:text-medical-700">Setup QMS System &rarr;</a>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="bg-white rounded-2xl p-7 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-medical-50 text-medical-600 flex items-center justify-center mb-6 group-hover:bg-medical-500 group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy-900 mb-3">SOPs & Compliant Formats</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                            Ready-to-use, fully structured, editable Word/Excel document templates aligned strictly with ISO 13485:2016 and MDR requirement guidelines.
+                        </p>
+                        <ul class="space-y-2 text-xs text-slate-500 mb-6">
+                            <li class="flex items-center"><svg class="w-4 h-4 text-emerald-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>CAPA & Non-Conformance Protocols</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-emerald-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Design Control & Change Management</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-emerald-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Device Master Record (DMR) Formats</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-emerald-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Supplier Evaluation & Auditing SOPs</li>
+                        </ul>
+                    </div>
+                    <a href="#catalog" class="inline-flex items-center text-sm font-bold text-medical-600 hover:text-medical-700">Browse Catalog &rarr;</a>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="bg-white rounded-2xl p-7 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-medical-50 text-medical-600 flex items-center justify-center mb-6 group-hover:bg-medical-500 group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy-900 mb-3">Gap Analysis & Audit Prep</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                            Rigorous mock audits and gap assessments prior to Notified Body submission to catch non-conformances early and prevent delays.
+                        </p>
+                        <ul class="space-y-2 text-xs text-slate-500 mb-6">
+                            <li class="flex items-center"><svg class="w-4 h-4 text-emerald-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Notified Body Deficiency Remediation</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-emerald-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Detailed Gap Matrix & Action Plan</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-emerald-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Mock Stage 1 & Stage 2 Audits</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-emerald-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>UDI & EUDAMED Integration Review</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center text-sm font-bold text-medical-600 hover:text-medical-700">Schedule Gap Audit &rarr;</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Document & Template Catalog Section -->
+    <section id="catalog" class="py-20 bg-white border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-widest font-semibold text-medical-600 bg-medical-50 px-3 py-1 rounded-full">Pre-Structured Deliverables</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 mt-3 tracking-tight">SOP & Technical Document Catalog</h2>
+                    <p class="text-slate-600 mt-2 text-base">Browse compliant document structures, SOP bundles, and technical file templates.</p>
+                </div>
+                
+                <!-- Category Filters -->
+                <div class="mt-6 md:mt-0 flex flex-wrap gap-2" id="catalog-filters">
+                    <button data-filter="all" class="filter-btn active px-4 py-2 rounded-lg text-sm font-medium bg-navy-900 text-white shadow-sm transition-all">All</button>
+                    <button data-filter="mdr" class="filter-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">EU MDR Technical Files</button>
+                    <button data-filter="iso" class="filter-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">ISO 13485 SOPs</button>
+                    <button data-filter="format" class="filter-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">QMS Formats & Logs</button>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="mb-8 max-w-md">
+                <div class="relative">
+                    <input type="text" id="catalog-search" placeholder="Search by title, ISO clause, or MDR Annex..." class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-medical-500 focus:bg-white transition-all">
+                    <svg class="w-5 h-5 text-slate-400 absolute left-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+            </div>
+
+            <!-- Catalog Items Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="catalog-grid">
+                
+                <!-- Catalog Item 1 -->
+                <div class="catalog-item bg-slate-50 rounded-xl p-6 border border-slate-200 flex flex-col justify-between hover:border-medical-500/50 transition-all" data-category="mdr">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-1 bg-blue-100 text-blue-800 rounded-md text-[11px] font-semibold uppercase">EU MDR Annex I</span>
+                            <span class="text-xs font-mono text-slate-500">MDR 2017/745</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-navy-900 mb-2">GSPR Compliance Matrix Template</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">Complete General Safety and Performance Requirements checklist mapped to harmonized standards and CS.</p>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="text-[10px] bg-white border border-slate-200 px-2 py-0.5 rounded text-slate-600">Clause 1-23</span>
+                            <span class="text-[10px] bg-white border border-slate-200 px-2 py-0.5 rounded text-slate-600">Editable XLSX</span>
+                        </div>
+                    </div>
+                    <button onclick="openModal('GSPR Compliance Matrix Template', 'EU MDR Annex I', 'Detailed matrix matching device technical attributes with essential principles. Includes columns for Applied Standards, Method of Compliance, and Location of Evidence in Technical File.', 'MDR Annex I, EN ISO 14971, EN ISO 10993, IEC 60601-1')" class="w-full mt-2 py-2 px-3 bg-white border border-slate-300 rounded-lg text-xs font-semibold text-navy-900 hover:bg-slate-100 transition-colors flex items-center justify-center">
+                        View Outline & Details
+                    </button>
+                </div>
+
+                <!-- Catalog Item 2 -->
+                <div class="catalog-item bg-slate-50 rounded-xl p-6 border border-slate-200 flex flex-col justify-between hover:border-medical-500/50 transition-all" data-category="iso">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded-md text-[11px] font-semibold uppercase">ISO 13485:2016</span>
+                            <span class="text-xs font-mono text-slate-500">Clause 8.5.2</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-navy-900 mb-2">CAPA Procedure & Workflow SOP</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">Standard Operating Procedure for Corrective and Preventive Action, root cause analysis (5-Why, Fishbone) & verification.</p>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="text-[10px] bg-white border border-slate-200 px-2 py-0.5 rounded text-slate-600">Clause 8.5.2 / 8.5.3</span>
+                            <span class="text-[10px] bg-white border border-slate-200 px-2 py-0.5 rounded text-slate-600">Word + Form</span>
+                        </div>
+                    </div>
+                    <button onclick="openModal('CAPA Procedure & Workflow SOP', 'ISO 13485:2016 Clause 8.5.2', 'Complete CAPA procedure specifying responsibilities for identification, containment, root cause investigation, action plan implementation, and effectiveness verification.', 'ISO 13485:2016 Clause 8.5.2, 21 CFR 820.100')" class="w-full mt-2 py-2 px-3 bg-white border border-slate-300 rounded-lg text-xs font-semibold text-navy-900 hover:bg-slate-100 transition-colors flex items-center justify-center">
+                        View Outline & Details
+                    </button>
+                </div>
+
+                <!-- Catalog Item 3 -->
+                <div class="catalog-item bg-slate-50 rounded-xl p-6 border border-slate-200 flex flex-col justify-between hover:border-medical-500/50 transition-all" data-category="mdr">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-1 bg-blue-100 text-blue-800 rounded-md text-[11px] font-semibold uppercase">MDR Annex III</span>
+                            <span class="text-xs font-mono text-slate-500">MDCG 2020-6</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-navy-900 mb-2">Post-Market Surveillance (PMS) Plan & PSUR</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">PMS System architecture, proactive data collection protocols, and Periodic Safety Update Report structures.</p>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="text-[10px] bg-white border border-slate-200 px-2 py-0.5 rounded text-slate-600">Art 83-86</span>
+                            <span class="text-[10px] bg-white border border-slate-200 px-2 py-0.5 rounded text-slate-600">DOCX Template</span>
+                        </div>
+                    </div>
+                    <button onclick="openModal('Post-Market Surveillance Plan & PSUR Framework', 'MDR Articles 83-86', 'Complete PMS strategy including reactive and proactive data sources, signal detection algorithms, PMCF linkages, and structured Periodic Safety Update Report (PSUR) templates.', 'EU MDR 2017/745 Art. 83-86, MDCG 2022-21')" class="w-full mt-2 py-2 px-3 bg-white border border-slate-300 rounded-lg text-xs font-semibold text-navy-900 hover:bg-slate-100 transition-colors flex items-center justify-center">
+                        View Outline & Details
+                    </button>
+                </div>
+
+                <!-- Catalog Item 4 -->
+                <div class="catalog-item bg-slate-50 rounded-xl p-6 border border-slate-200 flex flex-col justify-between hover:border-medical-500/50 transition-all" data-category="format">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-1 bg-amber-100 text-amber-800 rounded-md text-[11px] font-semibold uppercase">QMS Format</span>
+                            <span class="text-xs font-mono text-slate-500">ISO 13485:7.3</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-navy-900 mb-2">Design History File (DHF) Index & Formats</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">Structured Design Control templates covering Design Inputs, Outputs, Verification/Validation plans, and Transfer.</p>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="text-[10px] bg-white border border-slate-200 px-2 py-0.5 rounded text-slate-600">Clause 7.3</span>
+                            <span class="text-[10px] bg-white border border-slate-200 px-2 py-0.5 rounded text-slate-600">Bundle (12 Forms)</span>
+                        </div>
+                    </div>
+                    <button onclick="openModal('Design History File (DHF) Index & Bundle', 'ISO 13485:2016 Clause 7.3', 'A complete Design & Development folder architecture with master logs for inputs, outputs, design review minutes, verification matrices, and production transfer sign-offs.', 'ISO 13485:2016 Clause 7.3, 21 CFR 820.30')" class="w-full mt-2 py-2 px-3 bg-white border border-slate-300 rounded-lg text-xs font-semibold text-navy-900 hover:bg-slate-100 transition-colors flex items-center justify-center">
+                        View Outline & Details
+                    </button>
+                </div>
+
+                <!-- Catalog Item 5 -->
+                <div class="catalog-item bg-slate-50 rounded-xl p-6 border border-slate-200 flex flex-col justify-between hover:border-medical-500/50 transition-all" data-category="iso">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded-md text-[11px] font-semibold uppercase">ISO 13485:2016</span>
+                            <span class="text-xs font-mono text-slate-500">Clause 7.4</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-navy-900 mb-2">Supplier Evaluation & Purchasing SOP</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">Procedure for supplier risk categorization, initial qualification, ongoing monitoring, and quality agreement templates.</p>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="text-[10px] bg-white border border-slate-200 px-2 py-0.5 rounded text-slate-600">Clause 7.4.1-7.4.3</span>
+                            <span class="text-[10px] bg-white border border-slate-200 px-2 py-0.5 rounded text-slate-600">Word + Audit Form</span>
+                        </div>
+                    </div>
+                    <button onclick="openModal('Supplier Evaluation & Purchasing SOP', 'ISO 13485 Clause 7.4', 'Defines critical supplier criteria, supplier audit checklists, Quality Assurance Agreements (QAA), and annual performance scoring models.', 'ISO 13485:2016 7.4, GHTF/SG3/N17')" class="w-full mt-2 py-2 px-3 bg-white border border-slate-300 rounded-lg text-xs font-semibold text-navy-900 hover:bg-slate-100 transition-colors flex items-center justify-center">
+                        View Outline & Details
+                    </button>
+                </div>
+
+                <!-- Catalog Item 6 -->
+                <div class="catalog-item bg-slate-50 rounded-xl p-6 border border-slate-200 flex flex-col justify-between hover:border-medical-500/50 transition-all" data-category="mdr">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-1 bg-blue-100 text-blue-800 rounded-md text-[11px] font-semibold uppercase">ISO 14971:2019</span>
+                            <span class="text-xs font-mono text-slate-500">Risk Management</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-navy-900 mb-2">Risk Management File (RMF) Suite</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">Risk Management Plan, Hazard Identification Matrix, FMEA format, and Risk Management Report compliant with EN ISO 14971:2019.</p>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="text-[10px] bg-white border border-slate-200 px-2 py-0.5 rounded text-slate-600">ISO 14971:2019</span>
+                            <span class="text-[10px] bg-white border border-slate-200 px-2 py-0.5 rounded text-slate-600">Full Template Set</span>
+                        </div>
+                    </div>
+                    <button onclick="openModal('Risk Management File (RMF) Suite', 'ISO 14971:2019', 'Complete Risk File set including Hazard Analysis, Severity/Probability evaluation matrices, Risk Control measure tracking, and Benefit-Risk determination documentation.', 'ISO 14971:2019, ISO/TR 24971:2020')" class="w-full mt-2 py-2 px-3 bg-white border border-slate-300 rounded-lg text-xs font-semibold text-navy-900 hover:bg-slate-100 transition-colors flex items-center justify-center">
+                        View Outline & Details
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Document Modal -->
+    <div id="document-modal" class="fixed inset-0 z-50 hidden bg-navy-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative border border-slate-100 max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <button onclick="closeModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 p-1">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <span id="modal-tag" class="px-2.5 py-1 bg-medical-50 text-medical-600 rounded-md text-xs font-semibold uppercase">Tag</span>
+            <h3 id="modal-title" class="text-2xl font-bold text-navy-900 mt-2 mb-4">Document Title</h3>
+
+            <div class="space-y-4 text-sm text-slate-600 border-t border-slate-100 pt-4">
+                <div>
+                    <h5 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-1">Structure & Description</h5>
+                    <p id="modal-desc" class="leading-relaxed">Description content goes here.</p>
+                </div>
+
+                <div>
+                    <h5 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-1">Clause & Regulation Mapping</h5>
+                    <p id="modal-mapping" class="font-mono text-xs bg-slate-50 p-2.5 rounded border border-slate-200">ISO Mapping</p>
+                </div>
+
+                <div class="bg-blue-50/60 p-4 rounded-xl border border-blue-100 flex items-start space-x-3">
+                    <svg class="w-5 h-5 text-medical-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <p class="text-xs text-blue-900 leading-relaxed">
+                        All templates can be customized for your exact device classification and integrated directly into your company’s quality management software or document control system.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-8 flex flex-col sm:flex-row gap-3 pt-4 border-t border-slate-100">
+                <a href="#contact" onclick="closeModal(); prefillContactFromModal()" class="w-full py-3 bg-medical-500 hover:bg-medical-600 text-white font-semibold text-center text-sm rounded-xl transition-all shadow-md shadow-medical-500/20">
+                    Request Full Document / Adaptation Quote
+                </a>
+                <button onclick="closeModal()" class="w-full sm:w-auto px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm rounded-xl transition-all">
+                    Close Preview
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Cost & Scope Estimator Widget -->
+    <section id="estimator" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-hero-gradient opacity-90"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-mono uppercase tracking-widest font-semibold text-accent-cyan bg-white/10 px-3 py-1 rounded-full">Interactive Tool</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 tracking-tight">Scope & Timeline Estimator</h2>
+                <p class="text-slate-300 mt-3 text-base sm:text-lg">Select your device classification and documentation needs for an instant estimate of project scope, duration, and key milestones.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Estimator Inputs -->
+                <div class="lg:col-span-7 bg-navy-900/80 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-md space-y-6">
+                    
+                    <!-- Step 1: Device Class -->
+                    <div>
+                        <label class="block text-sm font-bold text-slate-200 mb-3">1. Medical Device Risk Classification (EU MDR)</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <button type="button" class="estimator-class-btn active p-3 rounded-xl border border-white/20 bg-white/10 text-center text-xs font-semibold hover:border-accent-cyan transition-all" data-class="class1" data-multiplier="1.0">
+                                <span class="block text-sm font-bold text-white mb-0.5">Class I</span>
+                                <span class="text-slate-400 font-normal">Low Risk</span>
+                            </button>
+                            <button type="button" class="estimator-class-btn p-3 rounded-xl border border-white/10 bg-white/5 text-center text-xs font-semibold hover:border-accent-cyan transition-all" data-class="class2a" data-multiplier="1.4">
+                                <span class="block text-sm font-bold text-white mb-0.5">Class IIa</span>
+                                <span class="text-slate-400 font-normal">Medium Risk</span>
+                            </button>
+                            <button type="button" class="estimator-class-btn p-3 rounded-xl border border-white/10 bg-white/5 text-center text-xs font-semibold hover:border-accent-cyan transition-all" data-class="class2b" data-multiplier="1.8">
+                                <span class="block text-sm font-bold text-white mb-0.5">Class IIb</span>
+                                <span class="text-slate-400 font-normal">Med-High Risk</span>
+                            </button>
+                            <button type="button" class="estimator-class-btn p-3 rounded-xl border border-white/10 bg-white/5 text-center text-xs font-semibold hover:border-accent-cyan transition-all" data-class="class3" data-multiplier="2.5">
+                                <span class="block text-sm font-bold text-white mb-0.5">Class III</span>
+                                <span class="text-slate-400 font-normal">High Risk / Implant</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Service Checkboxes -->
+                    <div>
+                        <label class="block text-sm font-bold text-slate-200 mb-3">2. Select Required Service Modules</label>
+                        <div class="space-y-2.5">
+                            <label class="flex items-center p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 cursor-pointer transition-all">
+                                <input type="checkbox" class="estimator-service-check rounded border-slate-600 text-medical-500 focus:ring-accent-cyan w-4 h-4" data-weeks="3" data-label="Full MDR Technical File Compilation" checked>
+                                <span class="ml-3 text-sm text-slate-200">Full MDR Technical File Compilation (Annex II/III)</span>
+                            </label>
+
+                            <label class="flex items-center p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 cursor-pointer transition-all">
+                                <input type="checkbox" class="estimator-service-check rounded border-slate-600 text-medical-500 focus:ring-accent-cyan w-4 h-4" data-weeks="2" data-label="Clinical Evaluation Plan & Report (CEP/CER)">
+                                <span class="ml-3 text-sm text-slate-200">Clinical Evaluation Plan & Report (CEP/CER)</span>
+                            </label>
+
+                            <label class="flex items-center p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 cursor-pointer transition-all">
+                                <input type="checkbox" class="estimator-service-check rounded border-slate-600 text-medical-500 focus:ring-accent-cyan w-4 h-4" data-weeks="4" data-label="Complete ISO 13485 QMS Setup & SOP Bundle">
+                                <span class="ml-3 text-sm text-slate-200">Complete ISO 13485 QMS Setup & Full SOP Bundle</span>
+                            </label>
+
+                            <label class="flex items-center p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 cursor-pointer transition-all">
+                                <input type="checkbox" class="estimator-service-check rounded border-slate-600 text-medical-500 focus:ring-accent-cyan w-4 h-4" data-weeks="1" data-label="Gap Analysis & Notified Body Pre-Assessment Audit">
+                                <span class="ml-3 text-sm text-slate-200">Gap Analysis & Pre-Assessment Audit Review</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Priority / Speed -->
+                    <div>
+                        <label class="block text-sm font-bold text-slate-200 mb-2">3. Timeline Priority</label>
+                        <select id="estimator-priority" class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-accent-cyan">
+                            <option value="1.0" class="bg-navy-900 text-white">Standard Execution (Best Quality & Review Iterations)</option>
+                            <option value="0.75" class="bg-navy-900 text-white">Accelerated Delivery (-25% Timeline, Priority Focus)</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <!-- Estimator Dynamic Summary Box -->
+                <div class="lg:col-span-5 bg-gradient-to-b from-navy-900 to-navy-950 border border-accent-cyan/30 rounded-2xl p-6 sm:p-8 shadow-2xl relative">
+                    <div class="absolute -top-3 right-6 bg-accent-cyan text-navy-950 px-3 py-0.5 rounded-full text-xs font-extrabold uppercase tracking-wider">
+                        Estimate Summary
+                    </div>
+
+                    <h3 class="text-xl font-bold text-white mb-6">Estimated Scope & Timeline</h3>
+
+                    <div class="space-y-4 pb-6 border-b border-white/10">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-slate-400">Device Classification:</span>
+                            <span id="summary-class" class="text-sm font-bold text-accent-cyan">Class I</span>
+                        </div>
+
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-slate-400">Selected Modules:</span>
+                            <span id="summary-count" class="text-sm font-bold text-white">1 Module</span>
+                        </div>
+
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-slate-400">Estimated Duration:</span>
+                            <span id="summary-timeline" class="text-2xl font-extrabold text-emerald-400 font-mono">3 - 4 Weeks</span>
+                        </div>
+                    </div>
+
+                    <div class="py-4 space-y-2">
+                        <span class="text-xs font-mono uppercase text-slate-400 block mb-2">Included In Scope:</span>
+                        <div id="summary-checklist" class="space-y-1.5 text-xs text-slate-300">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
+                    <button onclick="transferEstimateToContact()" class="w-full mt-6 py-4 bg-gradient-to-r from-medical-500 to-accent-cyan hover:from-medical-600 hover:to-accent-cyan text-white font-extrabold text-sm rounded-xl shadow-lg transition-all text-center block">
+                        Inquire Now With This Scope &rarr;
+                    </button>
+                    <p class="text-[11px] text-center text-slate-400 mt-2">No obligation. Custom formal quotation will be issued after technical briefing.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Process / Engagement Model Timeline Section -->
+    <section id="process" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-mono uppercase tracking-widest font-semibold text-medical-600 bg-medical-50 px-3 py-1 rounded-full">VR Medtech Workflow</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 mt-3 tracking-tight">4-Step Regulatory Engagement Process</h2>
+                <p class="text-slate-600 mt-3 text-base">A transparent, milestone-driven roadmap designed to deliver audit-ready quality documentation without operational friction.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+                
+                <!-- Step 1 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 relative shadow-sm hover:shadow-md transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-navy-900 text-accent-cyan font-mono font-bold flex items-center justify-center mb-4 text-base">01</div>
+                    <h3 class="text-lg font-bold text-navy-900 mb-2">Gap Analysis & Classification</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        In-depth gap analysis against EU MDR Annex VIII / CDSCO rules, verifying device classification and drafting remediation roadmap.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 relative shadow-sm hover:shadow-md transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-navy-900 text-accent-cyan font-mono font-bold flex items-center justify-center mb-4 text-base">02</div>
+                    <h3 class="text-lg font-bold text-navy-900 mb-2">Documentation & SOP Drafting</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Compilation of GSPR tables, ISO 14971 Risk Files, CERs, PMS/PSUR frameworks, and custom ISO 13485 QMS SOP packages.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 relative shadow-sm hover:shadow-md transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-navy-900 text-accent-cyan font-mono font-bold flex items-center justify-center mb-4 text-base">03</div>
+                    <h3 class="text-lg font-bold text-navy-900 mb-2">Verification & Validation Review</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Thorough internal peer-review and pre-audit inspection of Technical Dossier data against harmonized standards (IEC 60601, ISO 10993).
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 relative shadow-sm hover:shadow-md transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-navy-900 text-accent-cyan font-mono font-bold flex items-center justify-center mb-4 text-base">04</div>
+                    <h3 class="text-lg font-bold text-navy-900 mb-2">Notified Body / Audit Defense</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        End-to-end representation and defense during Notified Body (TÜV, BSI, DEKRA) or CDSCO Stage 1 & Stage 2 audits.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive FAQ Section (Accordion) -->
+    <section id="faq" class="py-20 bg-white border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14">
+                <span class="text-xs font-mono uppercase tracking-widest font-semibold text-medical-600 bg-medical-50 px-3 py-1 rounded-full">Got Questions?</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 mt-3 tracking-tight">Frequently Asked Questions</h2>
+                <p class="text-slate-600 mt-2 text-base">Everything you need to know about technical documentation consulting, confidentiality, and Notified Body requirements.</p>
+            </div>
+
+            <div class="space-y-4" id="faq-accordion">
+                
+                <!-- FAQ Item 1 -->
+                <div class="border border-slate-200 rounded-xl overflow-hidden transition-all">
+                    <button class="faq-btn w-full p-5 text-left font-bold text-navy-900 flex justify-between items-center hover:bg-slate-50 transition-colors">
+                        <span>How do you handle client confidentiality and proprietary design IP?</span>
+                        <svg class="w-5 h-5 text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-content hidden p-5 pt-0 text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-slate-50/50">
+                        A bilateral Non-Disclosure Agreement (NDA) is signed prior to receiving any proprietary device designs, clinical test data, or internal process documentation. All data is handled on encrypted, secure systems in accordance with strict GDPR and security standards.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="border border-slate-200 rounded-xl overflow-hidden transition-all">
+                    <button class="faq-btn w-full p-5 text-left font-bold text-navy-900 flex justify-between items-center hover:bg-slate-50 transition-colors">
+                        <span>Are the document formats guaranteed to pass Notified Body audits?</span>
+                        <svg class="w-5 h-5 text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-content hidden p-5 pt-0 text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-slate-50/50">
+                        While final regulatory approval rests on the manufacturer's physical device safety and clinical evidence, all documentation templates and technical files are authored strictly following current MDCG (Medical Device Coordination Group) guidelines, ISO standards, and proven Notified Body expectations (such as BSI, TÜV SÜD, DEKRA). Free remediation support is included for any documentation feedback received during your audit.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="border border-slate-200 rounded-xl overflow-hidden transition-all">
+                    <button class="faq-btn w-full p-5 text-left font-bold text-navy-900 flex justify-between items-center hover:bg-slate-50 transition-colors">
+                        <span>Can you assist legacy MDD devices transitioning to EU MDR?</span>
+                        <svg class="w-5 h-5 text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-content hidden p-5 pt-0 text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-slate-50/50">
+                        Yes. Transitioning legacy Medical Device Directive (MDD) technical files to Regulation (EU) 2017/745 (MDR) is a primary specialty. We conduct systematic gap analyses, update GSPR tables, establish PMCF frameworks, and re-align clinical evaluation reports with current MDCG requirements.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="border border-slate-200 rounded-xl overflow-hidden transition-all">
+                    <button class="faq-btn w-full p-5 text-left font-bold text-navy-900 flex justify-between items-center hover:bg-slate-50 transition-colors">
+                        <span>What is the typical lead time for a complete ISO 13485 QMS build?</span>
+                        <svg class="w-5 h-5 text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-content hidden p-5 pt-0 text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-slate-50/50">
+                        For small to medium medical device organizations, a tailored ISO 13485:2016 QMS (including Quality Manual, mandatory SOPs, process maps, and records templates) generally takes between 4 to 8 weeks depending on the complexity of your manufacturing supply chain and internal review cadence.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="border border-slate-200 rounded-xl overflow-hidden transition-all">
+                    <button class="faq-btn w-full p-5 text-left font-bold text-navy-900 flex justify-between items-center hover:bg-slate-50 transition-colors">
+                        <span>Do you provide pre-written SOP templates that we can edit ourselves?</span>
+                        <svg class="w-5 h-5 text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-content hidden p-5 pt-0 text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-slate-50/50">
+                        Yes, individual SOP packages and format bundles (CAPA, Risk Management, Supplier Audits, Design Control, etc.) are available for purchase in clean, fully editable Microsoft Word and Excel formats.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Consultation Booking Section -->
+    <section id="contact" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Info Sidebar -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <span class="text-xs font-mono uppercase tracking-widest font-semibold text-medical-600 bg-medical-50 px-3 py-1 rounded-full">Direct Consultation</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 mt-3 tracking-tight">Contact VR Medtech Pvt. Ltd</h2>
+                        <p class="text-slate-600 mt-3 text-base">Schedule a technical preliminary review or inquire about document bundles and full regulatory file compilation for EU & global markets.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-xl bg-medical-50 text-medical-600 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h4m-4 0V5"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-navy-900">Corporate Designation</h4>
+                                <p class="text-xs text-slate-600 mt-0.5">VR Medtech Pvt. Ltd | Regulated Medical Device & Quality Management Consultancy</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-xl bg-medical-50 text-medical-600 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-navy-900">Response Time Guarantee</h4>
+                                <p class="text-xs text-slate-600 mt-0.5">VR Medtech consultants reply within 24 business hours with custom technical proposals.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-xl bg-medical-50 text-medical-600 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-navy-900">Mutual NDA Protection</h4>
+                                <p class="text-xs text-slate-600 mt-0.5">VR Medtech executes mutual Non-Disclosure Agreements prior to reviewing design history files.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NDA Banner Box -->
+                    <div class="p-5 rounded-2xl bg-navy-900 text-white space-y-3">
+                        <div class="flex items-center space-x-2 text-accent-cyan">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                            <span class="text-xs font-bold uppercase tracking-wider">VR Medtech IP Guarantee</span>
+                        </div>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            All proprietary medical device specifications, CAD models, and clinical data shared with VR Medtech Pvt. Ltd are protected under strict corporate confidentiality protocols.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Contact Form Card -->
+                <div class="lg:col-span-7">
+                    <div class="bg-white rounded-2xl p-6 sm:p-10 border border-slate-200 shadow-xl">
+                        <form id="consultation-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Your Name *</label>
+                                    <input type="text" required placeholder="Dr. / Mr. / Ms. John Doe" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-medical-500 focus:bg-white transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Corporate Email *</label>
+                                    <input type="email" required placeholder="j.doe@medtech.com" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-medical-500 focus:bg-white transition-all">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Company / Organization</label>
+                                    <input type="text" placeholder="Nexus MedTech Ltd." class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-medical-500 focus:bg-white transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Medical Device Risk Class</label>
+                                    <select id="contact-device-class" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-medical-500 focus:bg-white transition-all">
+                                        <option value="Class I">Class I (Self-Certified / Sterile / Measuring)</option>
+                                        <option value="Class IIa">Class IIa (Medium Risk)</option>
+                                        <option value="Class IIb">Class IIb (Medium-High Risk)</option>
+                                        <option value="Class III">Class III (High Risk / Implantable)</option>
+                                        <option value="SaMD">Software as a Medical Device (SaMD)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Primary Required Service</label>
+                                <select id="contact-service-type" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-medical-500 focus:bg-white transition-all">
+                                    <option value="MDR Technical File">EU MDR Technical File Compilation (Annex II/III)</option>
+                                    <option value="ISO 13485 QMS">ISO 13485 Quality Management System Build</option>
+                                    <option value="SOP Formats Purchase">SOP & Format Templates Purchase</option>
+                                    <option value="Gap Analysis Audit">Notified Body Audit Readiness & Gap Analysis</option>
+                                    <option value="Clinical Evaluation">Clinical Evaluation Report (CER) Support</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Project Overview & Requirements *</label>
+                                <textarea id="contact-message" required rows="4" placeholder="Briefly describe your medical device, current compliance status, target Notified Body timelines..." class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-medical-500 focus:bg-white transition-all"></textarea>
+                            </div>
+
+                            <!-- Form Status Message -->
+                            <div id="form-status" class="hidden p-4 rounded-xl text-sm font-medium"></div>
+
+                            <button type="submit" class="w-full py-4 bg-navy-900 hover:bg-navy-950 text-white font-bold text-sm rounded-xl transition-all shadow-lg flex items-center justify-center space-x-2">
+                                <span>Submit Request to VR Medtech</span>
+                                <svg class="w-4 h-4 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-950 text-slate-400 py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-lg bg-medical-500 flex items-center justify-center text-white font-bold text-xs">
+                        VR
+                    </div>
+                    <span class="text-sm font-bold text-white">VR Medtech Pvt. Ltd</span>
+                </div>
+
+                <div class="text-xs text-center md:text-left">
+                    EU MDR 2017/745, ISO 13485:2016 & CDSCO Technical Documentation & QMS Specialists | India & Europe
+                </div>
+
+                <div class="text-xs font-mono text-slate-500">
+                    &copy; <span id="current-year"></span> VR Medtech Pvt. Ltd. All Rights Reserved.
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Set year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector('svg');
+                
+                // Toggle current FAQ item
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // Catalog Filtering Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const catalogItems = document.querySelectorAll('.catalog-item');
+        const searchInput = document.getElementById('catalog-search');
+
+        function filterCatalog() {
+            const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+            const searchQuery = searchInput.value.toLowerCase().trim();
+
+            catalogItems.forEach(item => {
+                const itemCategory = item.dataset.category;
+                const itemText = item.textContent.toLowerCase();
+
+                const matchesFilter = (activeFilter === 'all' || itemCategory === activeFilter);
+                const matchesSearch = itemText.includes(searchQuery);
+
+                if (matchesFilter && matchesSearch) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-navy-900', 'text-white');
+                    b.classList.add('bg-slate-100', 'text-slate-700');
+                });
+                btn.classList.add('active', 'bg-navy-900', 'text-white');
+                btn.classList.remove('bg-slate-100', 'text-slate-700');
+                filterCatalog();
+            });
+        });
+
+        searchInput.addEventListener('input', filterCatalog);
+
+        // Document Modal Functions
+        function openModal(title, tag, desc, mapping) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-tag').textContent = tag;
+            document.getElementById('modal-desc').textContent = desc;
+            document.getElementById('modal-mapping').textContent = mapping;
+            document.getElementById('document-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('document-modal').classList.add('hidden');
+        }
+
+        function prefillContactFromModal() {
+            const title = document.getElementById('modal-title').textContent;
+            const messageBox = document.getElementById('contact-message');
+            messageBox.value = `Inquiry for VR Medtech Pvt. Ltd regarding document format: "${title}". Please provide structure options and custom adaptation quote.`;
+        }
+
+        // Estimator Calculation Logic
+        const classBtns = document.querySelectorAll('.estimator-class-btn');
+        const serviceChecks = document.querySelectorAll('.estimator-service-check');
+        const prioritySelect = document.getElementById('estimator-priority');
+
+        function calculateEstimate() {
+            let selectedClassBtn = document.querySelector('.estimator-class-btn.active');
+            let multiplier = parseFloat(selectedClassBtn.dataset.multiplier);
+            let className = selectedClassBtn.querySelector('span').textContent;
+
+            let totalWeeks = 0;
+            let selectedModules = [];
+
+            serviceChecks.forEach(check => {
+                if (check.checked) {
+                    totalWeeks += parseFloat(check.dataset.weeks);
+                    selectedModules.push(check.dataset.label);
+                }
+            });
+
+            let priorityMult = parseFloat(prioritySelect.value);
+            let finalWeeks = Math.max(1, Math.round(totalWeeks * multiplier * priorityMult));
+
+            // Update DOM Summary
+            document.getElementById('summary-class').textContent = className;
+            document.getElementById('summary-count').textContent = `${selectedModules.length} Module(s)`;
+            document.getElementById('summary-timeline').textContent = `${finalWeeks} - ${finalWeeks + 1} Weeks`;
+
+            const checklistContainer = document.getElementById('summary-checklist');
+            checklistContainer.innerHTML = '';
+            
+            if (selectedModules.length === 0) {
+                checklistContainer.innerHTML = '<span class="text-slate-500 italic">Select at least one module above.</span>';
+            } else {
+                selectedModules.forEach(mod => {
+                    const item = document.createElement('div');
+                    item.className = 'flex items-center space-x-2';
+                    item.innerHTML = `<svg class="w-3.5 h-3.5 text-accent-cyan flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>${mod}</span>`;
+                    checklistContainer.appendChild(item);
+                });
+            }
+        }
+
+        classBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                classBtns.forEach(b => {
+                    b.classList.remove('active', 'border-white/20', 'bg-white/10');
+                    b.classList.add('border-white/10', 'bg-white/5');
+                });
+                btn.classList.add('active', 'border-white/20', 'bg-white/10');
+                calculateEstimate();
+            });
+        });
+
+        serviceChecks.forEach(check => check.addEventListener('change', calculateEstimate));
+        prioritySelect.addEventListener('change', calculateEstimate);
+
+        // Initial Calculation Run
+        calculateEstimate();
+
+        // Transfer Estimator Summary to Contact Form
+        function transferEstimateToContact() {
+            const className = document.getElementById('summary-class').textContent;
+            const timeline = document.getElementById('summary-timeline').textContent;
+            
+            const selectedModules = [];
+            serviceChecks.forEach(c => {
+                if (c.checked) selectedModules.push(c.dataset.label);
+            });
+
+            const messageBox = document.getElementById('contact-message');
+            messageBox.value = `[VR Medtech Scope Estimator Inquiry]\nDevice Risk Class: ${className}\nEstimated Duration: ${timeline}\nSelected Modules:\n- ${selectedModules.join('\n- ')}\n\nAdditional Details: `;
+
+            // Scroll to contact form smoothly
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Form Submit Handler (Non-alert, UI feedback)
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const statusDiv = document.getElementById('form-status');
+            
+            statusDiv.className = 'p-4 rounded-xl text-sm font-medium bg-emerald-50 text-emerald-800 border border-emerald-200 block';
+            statusDiv.innerHTML = '<strong>Consultation Request Received!</strong> Thank you for reaching out to VR Medtech Pvt. Ltd. Your inquiry and NDA parameters have been recorded. A senior regulatory consultant will review your device classification and respond within 24 business hours.';
+
+            // Reset form fields
+            document.getElementById('consultation-form').reset();
+            setTimeout(() => {
+                statusDiv.classList.add('hidden');
+            }, 8000);
+        }
+    </script>
+</body>
+</html>
